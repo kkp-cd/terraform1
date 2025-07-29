@@ -9,10 +9,10 @@
 
 provider "azurerm" {
   features {}
-  #subscription_id = "ID"
-  #client_id       = "ID"
+  #subscription_id = "sID"
+  #client_id       = "cID"
   #client_secret   = "Secret"
-  #tenant_id       = "ID"
+  #tenant_id       = "tID"
 }
 
 resource azurerm_resource_group rg {
