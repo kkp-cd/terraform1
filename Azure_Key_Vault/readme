@@ -1,0 +1,6 @@
+Resource	Purpose
+Resource Group	-> To store Key Vault
+Key Vault	-> Secure secrets + keys
+Access Policies	-> Gives access to current logged-in user/service principal
+Secret	-> A sample secret stored in Key Vault
+Random string	-> Ensures globally unique Key Vault name
