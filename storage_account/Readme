@@ -1,0 +1,9 @@
+Notes
+Storage account names must be globally unique, so using random_string avoids conflicts.
+
+Container access types:
+private
+blob
+container
+
+Resource Group location determines storage location unless overridden.
