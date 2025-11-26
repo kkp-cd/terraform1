@@ -1,3 +1,9 @@
+✅ Resource Group
+✅ Azure Key Vault
+✅ Access Policies (optional)
+✅ Secrets (optional)
+
+
 Resource	Purpose
 Resource Group	-> To store Key Vault
 Key Vault	-> Secure secrets + keys
