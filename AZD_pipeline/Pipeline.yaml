@@ -1,0 +1,57 @@
+trigger:
+- main
+
+pool:
+  name: 'MySelfHostedPool'   # ⭐ Your self-hosted agent pool
+
+variables:
+  TF_VAR_subscription_id: $(subscription_id)
+  TF_VAR_client_id: $(client_id)
+  TF_VAR_client_secret: $(client_secret)
+  TF_VAR_tenant_id: $(tenant_id)
+
+stages:
+- stage: Terraform_Deploy
+  displayName: "Terraform Deployment"
+  jobs:
+  - job: Terraform
+    displayName: "Run Terraform"
+    steps:
+
+    - checkout: self
+
+    # 🧽 Clean workspace (optional but recommended)
+    - script: |
+        rm -rf .terraform
+      displayName: "Clean previous TF data"
+
+    # 🔐 Azure login via Service Connection
+    - task: AzureCLI@2
+      inputs:
+        azureSubscription: 'my-azure-connection'    # ⭐ Azure RM Service Connection
+        scriptType: bash
+        scriptLocation: inlineScript
+        inlineScript: |
+          az account show
+      displayName: "Azure Login"
+
+    # 📁 Move to Terraform folder
+    - script: |
+        cd terraform
+        terraform init
+      workingDirectory: $(System.DefaultWorkingDirectory)
+      displayName: "Terraform Init"
+
+    # 🧪 Terraform Plan
+    - script: |
+        cd terraform
+        terraform plan -out=tfplan
+      workingDirectory: $(System.DefaultWorkingDirectory)
+      displayName: "Terraform Plan"
+
+    # 🚀 Terraform Apply
+    - script: |
+        cd terraform
+        terraform apply -auto-approve tfplan
+      workingDirectory: $(System.DefaultWorkingDirectory)
+      displayName: "Terraform Apply"
