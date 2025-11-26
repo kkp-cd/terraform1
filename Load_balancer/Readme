@@ -1,0 +1,17 @@
+✅ Resource Group
+✅ Virtual Network + Subnet
+✅ Public IP
+✅ Azure Load Balancer (Standard SKU)
+✅ Backend Pool
+✅ Health Probe
+✅ LB Rule
+
+Summary of What This Creates
+Resource	Purpose
+Resource Group ->	Container for resources
+VNet + Subnet	-> Network for VMs
+Public IP	-> Entry point
+Load Balancer	-> Azure Standard LB
+Backend Pool	-> Where VM NICs are added
+Probe	-> Health monitoring
+Rule	-> LB routing rule (80 → 80)
