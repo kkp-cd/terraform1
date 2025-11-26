@@ -1,3 +1,10 @@
+✅ Azure Resource Group
+✅ Azure Storage Account
+✅ Azure Blob Container
+
+Works with azurerm provider v3.x (latest versions).
+
+
 Notes
 Storage account names must be globally unique, so using random_string avoids conflicts.
 
